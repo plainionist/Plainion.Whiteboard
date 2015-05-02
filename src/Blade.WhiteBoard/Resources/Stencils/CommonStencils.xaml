@@ -1,0 +1,164 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:d="clr-namespace:Plainion.WhiteBoard.Designer"
+                    xmlns:t="clr-namespace:Plainion.WhiteBoard.Toolbox"
+                    xmlns:c="clr-namespace:Plainion.WhiteBoard.Controls"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="Resources.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+    <Style x:Key="Class" TargetType="d:ItemContent" BasedOn="{StaticResource ItemContentStyle}">
+        <Setter Property="ToolTip" Value="Class"/>
+        <Setter Property="Content">
+            <Setter.Value>
+                <Border Name="Body" 
+                        HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                        BorderBrush="{StaticResource ItemStroke}"
+                        BorderThickness="2">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="1"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <TextBlock Grid.Row="0" Text="AClass" HorizontalAlignment="Center" Name="ClassName" Margin="5" IsHitTestVisible="False"/>
+                        <Line Grid.Row="1" Stretch="Fill" X1="0" Y1="0" X2="1" Y2="1" Stroke="{StaticResource ItemStroke}" StrokeThickness="1"/>
+                    </Grid>
+                </Border>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Properties">
+            <Setter.Value>
+                <d:ItemPropertyCollection>
+                    <d:ItemProperty ElementName="ClassName" ElementProperty="Text" DisplayName="Name" IsComponentName="true"/>
+                    <d:ItemProperty ElementName="Body" ElementProperty="Background" DisplayName="Fill" IsComponentName="False"/>
+                </d:ItemPropertyCollection>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="Object" TargetType="d:ItemContent" BasedOn="{StaticResource ItemContentStyle}">
+        <Setter Property="ToolTip" Value="Object"/>
+        <Setter Property="Content">
+            <Setter.Value>
+                <Border Name="Body" 
+                        HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                        BorderBrush="{StaticResource ItemStroke}"
+                        BorderThickness="2" CornerRadius="10">
+                    <TextBlock Text="AObject" HorizontalAlignment="Center" VerticalAlignment="Center" Name="ObjectName" IsHitTestVisible="False"/>
+                </Border>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Properties">
+            <Setter.Value>
+                <d:ItemPropertyCollection>
+                    <d:ItemProperty ElementName="ObjectName" ElementProperty="Text" DisplayName="Name" IsComponentName="true"/>
+                    <d:ItemProperty ElementName="Body" ElementProperty="Background" DisplayName="Fill" IsComponentName="False"/>
+                </d:ItemPropertyCollection>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="Box" TargetType="d:ItemContent" BasedOn="{StaticResource ItemContentStyle}">
+        <Setter Property="ToolTip" Value="Box"/>
+        <Setter Property="Content">
+            <Setter.Value>
+                <Border Name="Body" 
+                        HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                        BorderBrush="{StaticResource ItemStroke}"
+                        BorderThickness="2">
+                </Border>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Properties">
+            <Setter.Value>
+                <d:ItemPropertyCollection>
+                    <d:ItemProperty ElementName="Body" ElementProperty="Background" DisplayName="Fill" IsComponentName="False"/>
+                </d:ItemPropertyCollection>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="FreeText" TargetType="d:ItemContent" BasedOn="{StaticResource ItemContentStyle}">
+        <Setter Property="ToolTip" Value="Free text"/>
+        <Setter Property="Content">
+            <Setter.Value>
+                <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                    <Grid Margin="2 2 2 2">
+                        <TextBlock Text="Text" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Name="Text" IsHitTestVisible="False" TextWrapping="Wrap" Margin="3"/>
+                    </Grid>
+                </Grid>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Properties">
+            <Setter.Value>
+                <d:ItemPropertyCollection>
+                    <d:ItemProperty ElementName="Text" ElementProperty="Text" DisplayName="Text" IsComponentName="true"/>
+                    <d:ItemProperty ElementName="Text" ElementProperty="FontWeight" DisplayName="Font Weight" IsComponentName="False"/>
+                    <d:ItemProperty ElementName="Text" ElementProperty="FontSize" DisplayName="Font Size" IsComponentName="False"/>
+                </d:ItemPropertyCollection>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+
+    <Style x:Key="Note" TargetType="d:ItemContent" BasedOn="{StaticResource ItemContentStyle}">
+        <Setter Property="ToolTip" Value="Note"/>
+        <Setter Property="Content">
+            <Setter.Value>
+                <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                    <Rectangle Name="Body" StrokeDashArray="4 2" Stroke="{StaticResource ItemStroke}" Fill="GhostWhite" StrokeThickness="1" IsHitTestVisible="False"/>
+                    <Grid Margin="2 2 2 2">
+                        <TextBlock Text="Note" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Name="Text" IsHitTestVisible="False" TextWrapping="Wrap" Margin="3"/>
+                    </Grid>
+                </Grid>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Properties">
+            <Setter.Value>
+                <d:ItemPropertyCollection>
+                    <d:ItemProperty ElementName="Text" ElementProperty="Text" DisplayName="Text"/>
+                    <d:ItemProperty ElementName="Body" ElementProperty="Fill" DisplayName="Fill" IsComponentName="False"/>
+                </d:ItemPropertyCollection>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="Storage" TargetType="d:ItemContent" BasedOn="{StaticResource ItemContentStyle}">
+        <Setter Property="ToolTip" Value="Storage"/>
+        <Setter Property="Content">
+            <Setter.Value>
+                <Path Style="{StaticResource ItemShapeStyle}">
+                    <Path.Data>
+                        <PathGeometry>
+                            <PathFigure IsClosed="False" StartPoint="0,10">
+                                <ArcSegment Point="50,10" Size="50,25"/>
+                                <ArcSegment Point="0,10" Size="50,25"/>
+                                <LineSegment Point="0,50"/>
+                                <ArcSegment Point="50,50" Size="50,25"/>
+                                <LineSegment Point="50,10"/>
+                            </PathFigure>
+                        </PathGeometry>
+                    </Path.Data>
+                </Path>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <t:Toolbox x:Key="CommonStencils" ItemSize="60,50" SnapsToDevicePixels="True"
+               ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+               FontSize="3">
+        <ItemsControl.Items>
+
+            <d:ItemContent Style="{StaticResource Class}" />
+            <d:ItemContent Style="{StaticResource Object}" FontSize="7"/>
+            <d:ItemContent Style="{StaticResource Box}" />
+            <d:ItemContent Style="{StaticResource FreeText}" FontSize="12"/>
+            <d:ItemContent Style="{StaticResource Note}" FontSize="7"/>
+            <d:ItemContent Style="{StaticResource Storage}"/>
+
+        </ItemsControl.Items>
+    </t:Toolbox>
+</ResourceDictionary>

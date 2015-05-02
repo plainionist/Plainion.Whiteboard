@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Node Id="5a1aca33-7046-46da-a7d8-fd6d9477fc37" Created="635401672294676130" LastModified="635401672421636659">
+  <Caption><![CDATA[Limitations]]></Caption>
+  <Content><![CDATA[- we cannot use binding in Stencils as XamlWriter does not preserve those
+- we cannot use TAG for itemproperties (not serialized)]]></Content>
+</Node>

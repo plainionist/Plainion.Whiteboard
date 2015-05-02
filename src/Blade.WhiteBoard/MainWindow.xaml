@@ -1,0 +1,119 @@
+﻿<Window x:Class="Plainion.WhiteBoard.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:pn="http://github.com/ronin4net/plainion"
+        xmlns:c="clr-namespace:Plainion.WhiteBoard.Controls"
+        xmlns:d="clr-namespace:Plainion.WhiteBoard.Designer"
+        xmlns:t="clr-namespace:Plainion.WhiteBoard.Toolbox"
+        xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
+        ResizeMode="NoResize"
+        Title="Plainion.WhiteBoard"
+        WindowState="Maximized"
+        Background="WhiteSmoke"
+        Height="850" Width="1100">
+
+    <Window.Resources>
+        <ContextMenu x:Key="DesignerCanvasContextMenu">
+            <MenuItem Header="Paste" Command="{x:Static ApplicationCommands.Paste}">
+                <MenuItem.Icon>
+                    <Image Source="Resources/Images/Paste.png" Width="16" ToolTip="Paste"/>
+                </MenuItem.Icon>
+            </MenuItem>
+            <MenuItem Header="Select All" Command="{x:Static d:DesignerCanvas.SelectAll}"/>
+        </ContextMenu>
+    </Window.Resources>
+
+    <Window.InputBindings>
+        <KeyBinding Modifiers="Control" Key="S" Command="{x:Static ApplicationCommands.Save}" CommandTarget="{Binding ElementName=myDesigner}"/>
+        <KeyBinding Modifiers="Control" Key="O" Command="{x:Static ApplicationCommands.Open}" CommandTarget="{Binding ElementName=myDesigner}"/>
+    </Window.InputBindings>
+    
+    <Grid Margin="2">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <ContentControl Content="{StaticResource MyToolbar}" HorizontalAlignment="Stretch"/>
+
+        <Grid Grid.Row="1" Margin="0,2,0,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="260"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <Grid  Grid.Column="0" Margin="0,0,5,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="300"/>
+                </Grid.RowDefinitions>
+
+                <!-- Toolbox -->
+                <StackPanel Grid.Row="0">
+                    <Expander Header="Common" Content="{StaticResource CommonStencils}" IsExpanded="True"/>
+                    <Expander Header="Special" Content="{StaticResource SpecialStencils}"/>
+                    <Expander Header="Thumbnail" IsExpanded="True">
+                        <c:ScrollViewerThumbnail ScrollViewer="{Binding ElementName=myScrollViewer}" 
+                                                 HorizontalAlignment="Stretch" Height="200"/>
+                    </Expander>
+                </StackPanel>
+
+                <GridSplitter Focusable="False" Height="2" Background="LightGray" HorizontalAlignment="Stretch" VerticalAlignment="Bottom"/>
+
+                <xctk:PropertyGrid Grid.Row="1" Name="myProperties" 
+                                   SelectedObject="{Binding Path=SelectedItem}"
+                                   ShowSearchBox="False"
+                                   ShowAdvancedOptions="False"
+                                   ShowPreview="False"
+                                   ShowSortOptions="False"
+                                   ShowSummary="False"
+                                   ShowTitle="False"
+                                   IsCategorized="False"
+                                   NameColumnWidth="80"
+                                   AutoGenerateProperties="True">
+                    <xctk:PropertyGrid.EditorDefinitions>
+                        <xctk:EditorTemplateDefinition TargetProperties="{x:Type Brush}">
+                            <xctk:EditorTemplateDefinition.EditingTemplate>
+                                <DataTemplate>
+                                    <c:BrushPicker SelectedBrush="{Binding Value}"/>
+                                </DataTemplate>
+                            </xctk:EditorTemplateDefinition.EditingTemplate>
+                        </xctk:EditorTemplateDefinition>
+                        <xctk:EditorTemplateDefinition TargetProperties="Text">
+                            <xctk:EditorTemplateDefinition.EditingTemplate>
+                                <DataTemplate>
+                                    <TextBox Text="{Binding Path=Value,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" TextWrapping="Wrap" AcceptsReturn="True" Height="100"/>
+                                </DataTemplate>
+                            </xctk:EditorTemplateDefinition.EditingTemplate>
+                        </xctk:EditorTemplateDefinition>
+                        <xctk:EditorTemplateDefinition TargetProperties="URL">
+                            <xctk:EditorTemplateDefinition.EditingTemplate>
+                                <DataTemplate>
+                                    <TextBox Text="{Binding Path=Value,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+                                </DataTemplate>
+                            </xctk:EditorTemplateDefinition.EditingTemplate>
+                        </xctk:EditorTemplateDefinition>
+                    </xctk:PropertyGrid.EditorDefinitions>
+                </xctk:PropertyGrid>
+            </Grid>
+
+            <GridSplitter Focusable="False" Width="2" Background="LightGray" VerticalAlignment="Stretch" HorizontalAlignment="Right"/>
+
+            <!-- Designer -->
+            <ScrollViewer Name="myScrollViewer" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" Grid.Column="1" Margin="3,0,0,0">
+                <i:Interaction.Behaviors>
+                    <pn:PanOnLMBBehavior/>
+                </i:Interaction.Behaviors>
+
+                <d:DesignerCanvas Focusable="true" x:Name="myDesigner"
+                                  Background="{StaticResource WindowBackgroundBrush}"
+                                  FocusVisualStyle="{x:Null}"
+                                  ContextMenu="{StaticResource DesignerCanvasContextMenu}"/>
+            </ScrollViewer>
+        </Grid>
+    </Grid>
+</Window>

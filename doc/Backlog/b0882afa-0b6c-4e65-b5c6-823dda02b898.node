@@ -1,0 +1,5 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Node Id="b0882afa-0b6c-4e65-b5c6-823dda02b898" Created="635401671858178812" LastModified="635661734084850482">
+  <Caption><![CDATA[load stencils dynamically from filesystem]]></Caption>
+  <Content><![CDATA[currently everything is bound on compile time]]></Content>
+</Node>

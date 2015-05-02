@@ -1,0 +1,229 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:w="clr-namespace:Plainion.WhiteBoard"
+                    xmlns:d="clr-namespace:Plainion.WhiteBoard.Designer"
+                    xmlns:o="clr-namespace:Plainion.WhiteBoard.Controls"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/Resources/Styles/Shared.xaml"/>
+        <ResourceDictionary Source="/Resources/Styles/ToolBar.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
+
+    <Path x:Key="CloseButtonContent" Margin="5" Stroke="Black" StrokeThickness="2" StrokeStartLineCap="Square" StrokeEndLineCap="Square"
+          Stretch="Uniform" x:Shared="False" Width="16">
+        <Path.Data>
+            <PathGeometry>
+                <PathGeometry.Figures>
+                    <PathFigure StartPoint="0,0">
+                        <LineSegment Point="25,25"/>
+                    </PathFigure>
+                    <PathFigure StartPoint="0,25">
+                        <LineSegment Point="25,0"/>
+                    </PathFigure>
+                </PathGeometry.Figures>
+            </PathGeometry>
+        </Path.Data>
+    </Path>
+
+    <Path x:Key="OkButtonContent" Margin="4,5,4,4" Fill="Black" Stretch="Uniform" UseLayoutRounding="False" 
+          Data="F1 M 0,110L 47.6667,62L 102,117.333L 218.667,0L 266,48L 102,212.333L 0,110 Z" Width="16"/>
+
+    <DockPanel x:Key="MyToolbar"  HorizontalAlignment="Stretch">
+        <StackPanel DockPanel.Dock="Left" Orientation="Horizontal">
+            <!--File-->
+            <GroupBox Style="{StaticResource ToolbarGroup}" Margin="1">
+                <StackPanel Orientation="Horizontal">
+                    <Button Padding="1" HorizontalContentAlignment="Left" Style="{StaticResource ToolBarButtonBaseStyle}"
+                        Command="{x:Static ApplicationCommands.New}" CommandTarget="{Binding ElementName=myDesigner}">
+                        <Button.Content>
+                            <Image Source="/Resources/Images/GenericDocument.png" Width="16" ToolTip="New"/>
+                        </Button.Content>
+                    </Button>
+                    <Button Padding="1" HorizontalContentAlignment="Left" Style="{StaticResource ToolBarButtonBaseStyle}"
+                        Command="{x:Static ApplicationCommands.Open}" CommandTarget="{Binding ElementName=myDesigner}">
+                        <Button.Content>
+                            <Image Source="/Resources/Images/OpenFolder.png" Width="16" ToolTip="Open"/>
+                        </Button.Content>
+                    </Button>
+                    <Button Padding="1" HorizontalContentAlignment="Left" Style="{StaticResource ToolBarButtonBaseStyle}"
+                        Command="{x:Static ApplicationCommands.Save}" CommandTarget="{Binding ElementName=myDesigner}">
+                        <Button.Content>
+                            <Image Source="/Resources/Images/Save.png" Width="16" ToolTip="Save"/>
+                        </Button.Content>
+                    </Button>
+                    <Button Padding="1" HorizontalContentAlignment="Left" Style="{StaticResource ToolBarButtonBaseStyle}"
+                        Command="{x:Static ApplicationCommands.Print}" CommandTarget="{Binding ElementName=myDesigner}">
+                        <Button.Content>
+                            <Image Source="/Resources/Images/Print.png" Width="16" ToolTip="Print"/>
+                        </Button.Content>
+                    </Button>
+                </StackPanel>
+            </GroupBox>
+
+
+            <!--Edit-->
+            <GroupBox Style="{StaticResource ToolbarGroup}" Margin="1">
+                <StackPanel Orientation="Horizontal">
+                    <Button Padding="1" HorizontalContentAlignment="Left" Style="{StaticResource ToolBarButtonBaseStyle}"
+                        Command="{x:Static ApplicationCommands.Paste}" CommandTarget="{Binding ElementName=myDesigner}">
+                        <Button.Content>
+                            <Image Source="/Resources/Images/PasteBig.png" Width="16" ToolTip="Paste"/>
+                        </Button.Content>
+                    </Button>
+                    <Button Padding="1" HorizontalContentAlignment="Left" Style="{StaticResource ToolBarButtonBaseStyle}"
+                        Command="{x:Static ApplicationCommands.Cut}" CommandTarget="{Binding ElementName=myDesigner}">
+                        <Button.Content>
+                            <Image Source="/Resources/Images/Cut.png" Width="16" ToolTip="Cut"/>
+                        </Button.Content>
+                    </Button>
+                    <Button Padding="1" HorizontalContentAlignment="Left" Style="{StaticResource ToolBarButtonBaseStyle}"
+                        Command="{x:Static ApplicationCommands.Copy}" CommandTarget="{Binding ElementName=myDesigner}">
+                        <Button.Content>
+                            <Image Source="/Resources/Images/Copy.png" Width="16" ToolTip="Copy"/>
+                        </Button.Content>
+                    </Button>
+                    <Button Padding="1" HorizontalContentAlignment="Left" Style="{StaticResource ToolBarButtonBaseStyle}"
+                        Command="{x:Static ApplicationCommands.Delete}" CommandTarget="{Binding ElementName=myDesigner}">
+                        <Button.Content>
+                            <Image Source="/Resources/Images/Delete.png" Width="16" ToolTip="Delete"/>
+                        </Button.Content>
+                    </Button>
+                </StackPanel>
+            </GroupBox>
+
+            <!--Alignment-->
+            <GroupBox Style="{StaticResource ToolbarGroup}" Margin="1">
+                <StackPanel Orientation="Horizontal">
+                    <Button Padding="1" Style="{StaticResource ToolBarButtonBaseStyle}"
+                        Command="{x:Static d:DesignerCanvas.AlignLeft}" CommandTarget="{Binding ElementName=myDesigner}">
+                        <Button.Content>
+                            <Image Source="/Resources/Images/AlignObjectsLeft.png" Width="16" ToolTip="Align objects left"/>
+                        </Button.Content>
+                    </Button>
+                    <Button Padding="1" Style="{StaticResource ToolBarButtonBaseStyle}"
+                        Command="{x:Static d:DesignerCanvas.AlignHorizontalCenters}" CommandTarget="{Binding ElementName=myDesigner}">
+                        <Button.Content>
+                            <Image Source="/Resources/Images/AlignObjectsCenteredHorizontal.png" Width="16" ToolTip="Align objects horizontally centered"/>
+                        </Button.Content>
+                    </Button>
+                    <Button Padding="1" Style="{StaticResource ToolBarButtonBaseStyle}"
+                        Command="{x:Static d:DesignerCanvas.AlignRight}" CommandTarget="{Binding ElementName=myDesigner}">
+                        <Button.Content>
+                            <Image Source="/Resources/Images/AlignObjectsRight.png" Width="16" ToolTip="Align objects right"/>
+                        </Button.Content>
+                    </Button>
+                    <Button Padding="1" Style="{StaticResource ToolBarButtonBaseStyle}"
+                        Command="{x:Static d:DesignerCanvas.AlignTop}" CommandTarget="{Binding ElementName=myDesigner}">
+                        <Button.Content>
+                            <Image Source="/Resources/Images/AlignObjectsTop.png" Width="16" ToolTip="Align objects top"/>
+                        </Button.Content>
+                    </Button>
+                    <Button Padding="1" Style="{StaticResource ToolBarButtonBaseStyle}"
+                        Command="{x:Static d:DesignerCanvas.AlignVerticalCenters}" CommandTarget="{Binding ElementName=myDesigner}">
+                        <Button.Content>
+                            <Image Source="/Resources/Images/AlignObjectsCenteredVertical.png" Width="16" ToolTip="Align objects vertically centered"/>
+                        </Button.Content>
+                    </Button>
+                    <Button Padding="1" Style="{StaticResource ToolBarButtonBaseStyle}"
+                        Command="{x:Static d:DesignerCanvas.AlignBottom}" CommandTarget="{Binding ElementName=myDesigner}">
+                        <Button.Content>
+                            <Image Source="/Resources/Images/AlignObjectsBottom.png" Width="16" ToolTip="Align objects bottom"/>
+                        </Button.Content>
+                    </Button>
+                    <Button Padding="1" HorizontalContentAlignment="Left" Style="{StaticResource ToolBarButtonBaseStyle}"
+                        Command="{x:Static d:DesignerCanvas.DistributeHorizontal}" CommandTarget="{Binding ElementName=myDesigner}">
+                        <Button.Content>
+                            <Image Source="/Resources/Images/DistributeObjectsHorizontal.png" Width="16" ToolTip="Distribute objects horizontally"/>
+                        </Button.Content>
+                    </Button>
+                    <Button Padding="1" HorizontalContentAlignment="Left" Style="{StaticResource ToolBarButtonBaseStyle}"
+                        Command="{x:Static d:DesignerCanvas.DistributeVertical}" CommandTarget="{Binding ElementName=myDesigner}">
+                        <Button.Content>
+                            <Image Source="/Resources/Images/DistributeObjectsVertical.png" Width="16" ToolTip="Distribute objects vertically"/>
+                        </Button.Content>
+                    </Button>
+                </StackPanel>
+            </GroupBox>
+
+            <!--Arrange-->
+            <GroupBox Style="{StaticResource ToolbarGroup}" Margin="1">
+                <StackPanel Orientation="Horizontal">
+                    <Button Padding="1" HorizontalContentAlignment="Left" Style="{StaticResource ToolBarButtonBaseStyle}"
+                        Command="{x:Static d:DesignerCanvas.Group}" CommandTarget="{Binding ElementName=myDesigner}">
+                        <Button.Content>
+                            <Image Source="/Resources/Images/Group.png" Width="16" ToolTip="Group"/>
+                        </Button.Content>
+                    </Button>
+                    <Button Padding="1" HorizontalContentAlignment="Left" Style="{StaticResource ToolBarButtonBaseStyle}"
+                        Command="{x:Static d:DesignerCanvas.Ungroup}" CommandTarget="{Binding ElementName=myDesigner}">
+                        <Button.Content>
+                            <Image Source="/Resources/Images/Ungroup.png" Width="16" ToolTip="Ungroup"/>
+                        </Button.Content>
+                    </Button>
+                    <Button Padding="1" HorizontalContentAlignment="Left" Style="{StaticResource ToolBarButtonBaseStyle}"
+                        Command="{x:Static d:DesignerCanvas.BringForward}" CommandTarget="{Binding ElementName=myDesigner}">
+                        <Button.Content>
+                            <Image Source="/Resources/Images/BringForward.png" Width="16" ToolTip="Forward"/>
+                        </Button.Content>
+                    </Button>
+                    <Button Padding="1" HorizontalContentAlignment="Left" Style="{StaticResource ToolBarButtonBaseStyle}"
+                        Command="{x:Static d:DesignerCanvas.BringToFront}" CommandTarget="{Binding ElementName=myDesigner}">
+                        <Button.Content>
+                            <Image Source="/Resources/Images/BringToFront.png" Width="16" ToolTip="To front"/>
+                        </Button.Content>
+                    </Button>
+                    <Button Padding="1" HorizontalContentAlignment="Left" Style="{StaticResource ToolBarButtonBaseStyle}"
+                        Command="{x:Static d:DesignerCanvas.SendBackward}" CommandTarget="{Binding ElementName=myDesigner}">
+                        <Button.Content>
+                            <Image Source="/Resources/Images/SendBackward.png" Width="16" ToolTip="Backward"/>
+                        </Button.Content>
+                    </Button>
+                    <Button Padding="1" HorizontalContentAlignment="Left" Style="{StaticResource ToolBarButtonBaseStyle}"
+                        Command="{x:Static d:DesignerCanvas.SendToBack}" CommandTarget="{Binding ElementName=myDesigner}">
+                        <Button.Content>
+                            <Image Source="/Resources/Images/SendToBack.png" Width="16" ToolTip="To back"/>
+                        </Button.Content>
+                    </Button>
+                </StackPanel>
+            </GroupBox>
+
+            <!-- Drawing -->
+            <GroupBox Style="{StaticResource ToolbarGroup}" Margin="1">
+                <StackPanel Orientation="Horizontal">
+                    <ComboBox Padding="1" HorizontalContentAlignment="Center" Width="60" Name="myArrowStyleBox"
+                          o:SelectionChangedBehaviour.Command="{x:Static d:DesignerCanvas.ConnectionStyleChanged}"
+                          o:SelectionChangedBehaviour.CommandTarget="{Binding ElementName=myDesigner}">
+                        <ComboBox.Resources>
+                            <sys:Double x:Key="{x:Static SystemParameters.VerticalScrollBarWidthKey}">0</sys:Double>
+                        </ComboBox.Resources>
+
+                        <ComboBoxItem Selector.IsSelected="True">
+                            <Canvas Width="45" Height="18" Tag="{x:Static Member=d:ArrowSymbol.Arrow}">
+                                <Line X1="0" X2="40" Y1="10" Y2="10" Stroke="Black" StrokeThickness="2"/>
+                                <Path Fill="Black" Data="M0,0 10,5 0,10 Z" Width="10" Height="10">
+                                    <Path.RenderTransform>
+                                        <TranslateTransform X="35" Y="5"/>
+                                    </Path.RenderTransform>
+                                </Path>
+                            </Canvas>
+                        </ComboBoxItem>
+
+                        <Canvas Width="45" Height="18" Tag="{x:Static Member=d:ArrowSymbol.None}">
+                            <Line X1="0" X2="45" Y1="10" Y2="10" Stroke="Black" StrokeThickness="2"/>
+                        </Canvas>
+                    </ComboBox>
+                </StackPanel>
+            </GroupBox>
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal" DockPanel.Dock="Right" HorizontalAlignment="Right">
+            <Button Padding="1" HorizontalContentAlignment="Left" Style="{StaticResource ToolBarButtonBaseStyle}"
+                    Command="{x:Static w:Commands.SaveAndClose}" CommandTarget="{Binding ElementName=myDesigner}"
+                    Content="{StaticResource OkButtonContent}"/>
+            <Button Padding="1" HorizontalContentAlignment="Left" Style="{StaticResource ToolBarButtonBaseStyle}"
+                    Command="{x:Static w:Commands.DiscardAndClose}" CommandTarget="{Binding ElementName=myDesigner}"
+                    Content="{StaticResource CloseButtonContent}" />
+        </StackPanel>
+    </DockPanel>
+</ResourceDictionary>

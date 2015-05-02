@@ -1,0 +1,30 @@
+﻿<UserControl x:Class="Plainion.WhiteBoard.Controls.ScrollViewerThumbnail"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008">
+    <Viewbox DataContext="{Binding ScrollViewer}" Stretch="Uniform">
+        <Grid>
+            <Rectangle Name="myRect">
+                <Rectangle.Fill>
+                    <VisualBrush x:Name="myVisualBrush" Visual="{Binding Content}"/>
+                </Rectangle.Fill>
+            </Rectangle>
+
+            <Thumb Name="myHighlight" 
+                   Width="{Binding ViewportWidth}" 
+                   Height="{Binding ViewportHeight}"
+                   HorizontalAlignment="Left" 
+                   VerticalAlignment="Top">
+                <Thumb.RenderTransform>
+                    <TranslateTransform x:Name="Transform"/>
+                </Thumb.RenderTransform>
+                <Thumb.Template>
+                    <ControlTemplate TargetType="Thumb">
+                        <Border Background="#55FFFF00" />
+                    </ControlTemplate>
+                </Thumb.Template>
+            </Thumb>
+        </Grid>
+    </Viewbox>
+</UserControl>

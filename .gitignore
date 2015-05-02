@@ -1,0 +1,8 @@
+**/bin/**
+**/obj/**
+/*.suo
+/packages/CommonServiceLocator.1.2/
+/packages/Expression.Blend.Sdk.1.0.2/
+/packages/Plainion.Core.2.1.0.0/
+/packages/Plainion.Windows.1.4.0.0
+/packages/Extended.Wpf.Toolkit.2.4/
