@@ -10,30 +10,38 @@ namespace Plainion.WhiteBoard
     {
         private CompositionContainer myContainer;
 
-        private void Application_Activated( object sender, EventArgs e )
+        protected override void OnStartup( StartupEventArgs e )
         {
-            if ( myContainer != null )
-            {
-                return;
-            }
+            base.OnStartup( e );
 
             new UnhandledExceptionHook( this );
 
+            Application.Current.Exit += OnShutdown;
+
             var catalog = new AssemblyCatalog( GetType().Assembly );
+            myContainer = new CompositionContainer( catalog, CompositionOptions.DisableSilentRejection );
 
-            myContainer = new CompositionContainer( catalog );
+            myContainer.Compose( new CompositionBatch() );
 
-            var designer = ((MainWindow)MainWindow).myDesigner;
+            var shell = myContainer.GetExportedValue<Shell>();
 
-            myContainer.SatisfyImportsOnce( designer );
+            myContainer.SatisfyImportsOnce( shell.myDesigner );
 
-            ((MainWindow)MainWindow).myProperties.DataContext = designer.SelectionService;
+            ( ( Shell )MainWindow ).myProperties.DataContext = shell.myDesigner.SelectionService;
+
+            Application.Current.MainWindow = shell;
+            Application.Current.MainWindow.Show();
 
             var args = Environment.GetCommandLineArgs();
             if( args.Length == 2 )
             {
-                designer.Open( args[ 1 ] );
+                shell.myDesigner.Open( args[ 1 ] );
             }
+        }
+
+        private void OnShutdown( object sender, ExitEventArgs e )
+        {
+            myContainer.Dispose();
         }
     }
 }

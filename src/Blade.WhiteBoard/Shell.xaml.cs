@@ -1,11 +1,13 @@
-﻿using System.Windows;
+﻿using System.ComponentModel.Composition;
+using System.Windows;
 using System.Windows.Input;
 
 namespace Plainion.WhiteBoard
 {
-    public partial class MainWindow : Window
+    [Export]
+    public partial class Shell : Window
     {
-        public MainWindow()
+        public Shell()
         {
             InitializeComponent();
         }
