@@ -146,7 +146,7 @@ namespace Plainion.WhiteBoard.Designer
             {
                 return myPathGeometry;
             }
-            set
+            private set
             {
                 if ( myPathGeometry == value )
                 {

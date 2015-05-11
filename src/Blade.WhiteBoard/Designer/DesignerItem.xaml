@@ -84,10 +84,40 @@
     <!-- ConnectorDecoratorTemplate Default Template -->
     <ControlTemplate x:Key="ConnectorDecoratorTemplate" TargetType="{x:Type Control}">
         <Grid Margin="-5">
-            <d:Connector x:Name="Left" Orientation="Left" VerticalAlignment="Center" HorizontalAlignment="Left"/>
-            <d:Connector x:Name="Top" Orientation="Top" VerticalAlignment="Top" HorizontalAlignment="Center"/>
-            <d:Connector x:Name="Right" Orientation="Right" VerticalAlignment="Center" HorizontalAlignment="Right"/>
-            <d:Connector x:Name="Bottom" Orientation="Bottom" VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <d:Connector Grid.Column="0" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Left" Orientation="Left"/>
+            <d:Connector Grid.Column="0" Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Left" Orientation="Left"/>
+            <d:Connector Grid.Column="0" Grid.Row="5" VerticalAlignment="Center" HorizontalAlignment="Left" Orientation="Left"/>
+
+            <d:Connector Grid.Column="1" Grid.Row="0" VerticalAlignment="Top" HorizontalAlignment="Center" Orientation="Top"/>
+            <d:Connector Grid.Column="3" Grid.Row="0" VerticalAlignment="Top" HorizontalAlignment="Center" Orientation="Top"/>
+            <d:Connector Grid.Column="5" Grid.Row="0" VerticalAlignment="Top" HorizontalAlignment="Center" Orientation="Top"/>
+
+            <d:Connector Grid.Column="6" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Right" Orientation="Right"/>
+            <d:Connector Grid.Column="6" Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Right" Orientation="Right"/>
+            <d:Connector Grid.Column="6" Grid.Row="5" VerticalAlignment="Center" HorizontalAlignment="Right" Orientation="Right"/>
+
+            <d:Connector Grid.Column="1" Grid.Row="6" VerticalAlignment="Bottom" HorizontalAlignment="Center" Orientation="Bottom"/>
+            <d:Connector Grid.Column="3" Grid.Row="6" VerticalAlignment="Bottom" HorizontalAlignment="Center" Orientation="Bottom"/>
+            <d:Connector Grid.Column="5" Grid.Row="6" VerticalAlignment="Bottom" HorizontalAlignment="Center" Orientation="Bottom"/>
         </Grid>
     </ControlTemplate>
 

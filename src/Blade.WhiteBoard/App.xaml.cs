@@ -34,7 +34,6 @@ namespace Plainion.WhiteBoard
             {
                 designer.Open( args[ 1 ] );
             }
-
         }
     }
 }
