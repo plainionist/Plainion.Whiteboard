@@ -32,7 +32,8 @@
         <Setter Property="Properties">
             <Setter.Value>
                 <d:ItemPropertyCollection>
-                    <d:ItemProperty ElementName="ClassName" ElementProperty="Text" DisplayName="Name" IsComponentName="true"/>
+                    <!-- seems there is some issue with "Name" in PropertyGrid - we dont get SetValue() calls :( -->
+                    <d:ItemProperty ElementName="ClassName" ElementProperty="Text" DisplayName="Caption" IsComponentName="true"/>
                     <d:ItemProperty ElementName="Body" ElementProperty="Background" DisplayName="Fill" IsComponentName="False"/>
                 </d:ItemPropertyCollection>
             </Setter.Value>
@@ -54,7 +55,7 @@
         <Setter Property="Properties">
             <Setter.Value>
                 <d:ItemPropertyCollection>
-                    <d:ItemProperty ElementName="ObjectName" ElementProperty="Text" DisplayName="Name" IsComponentName="true"/>
+                    <d:ItemProperty ElementName="ObjectName" ElementProperty="Text" DisplayName="Caption" IsComponentName="true"/>
                     <d:ItemProperty ElementName="Body" ElementProperty="Background" DisplayName="Fill" IsComponentName="False"/>
                 </d:ItemPropertyCollection>
             </Setter.Value>

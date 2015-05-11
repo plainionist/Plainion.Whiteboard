@@ -23,7 +23,7 @@ namespace Plainion.WhiteBoard.Designer
         {
             get
             {
-                if ( myOwner == null )
+                if( myOwner == null )
                 {
                     myOwner = GetOwner();
                 }
@@ -34,14 +34,14 @@ namespace Plainion.WhiteBoard.Designer
 
         private DependencyObject GetOwner()
         {
-            if ( myProperty.ElementName == null )
+            if( myProperty.ElementName == null )
             {
                 // property directly on the owner
                 return myRoot;
             }
 
             var owner = LogicalTreeHelper.FindLogicalNode( myRoot, myProperty.ElementName );
-            if ( owner != null )
+            if( owner != null )
             {
                 return owner;
             }
@@ -53,42 +53,28 @@ namespace Plainion.WhiteBoard.Designer
         {
             get
             {
-                if ( myPropertyInfo == null )
+                if( myPropertyInfo == null )
                 {
-                    myPropertyInfo = GetPropertyInfo();
+                    myPropertyInfo = Owner.GetType().GetProperty( myProperty.ElementProperty );
                 }
 
                 return myPropertyInfo;
             }
         }
 
-        private PropertyInfo GetPropertyInfo()
-        {
-            return Owner.GetType().GetProperty( myProperty.ElementProperty );
-        }
-
         public override Type ComponentType
         {
-            get
-            {
-                return typeof( ItemContent );
-            }
+            get { return typeof( ItemContent ); }
         }
 
         public override bool IsReadOnly
         {
-            get
-            {
-                return false;
-            }
+            get { return false; }
         }
 
         public override Type PropertyType
         {
-            get
-            {
-                return PropertyInfo.PropertyType;
-            }
+            get { return PropertyInfo.PropertyType; }
         }
 
         public override bool CanResetValue( object component )
@@ -101,18 +87,16 @@ namespace Plainion.WhiteBoard.Designer
             return PropertyInfo.GetValue( Owner, null );
         }
 
-        private object GetDefault()
-        {
-            if ( PropertyType.IsValueType )
-            {
-                return Activator.CreateInstance( PropertyType );
-            }
-            return null;
-        }
-
         public override void ResetValue( object component )
         {
-            myPropertyInfo.SetValue( Owner, GetDefault(), null );
+            if( PropertyType.IsValueType )
+            {
+                myPropertyInfo.SetValue( Owner, Activator.CreateInstance( PropertyType ), null );
+            }
+            else
+            {
+                myPropertyInfo.SetValue( Owner, null, null );
+            }
         }
 
         public override void SetValue( object component, object value )
@@ -127,10 +111,7 @@ namespace Plainion.WhiteBoard.Designer
 
         public override bool IsBrowsable
         {
-            get
-            {
-                return true;
-            }
+            get { return true; }
         }
     }
 }

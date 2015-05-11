@@ -86,7 +86,15 @@
                         <xctk:EditorTemplateDefinition TargetProperties="Text">
                             <xctk:EditorTemplateDefinition.EditingTemplate>
                                 <DataTemplate>
-                                    <TextBox Text="{Binding Path=Value,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" TextWrapping="Wrap" AcceptsReturn="True" Height="100"/>
+                                    <TextBox Text="{Binding Path=Value,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" TextWrapping="Wrap" 
+                                             AcceptsReturn="True" Height="100"/>
+                                </DataTemplate>
+                            </xctk:EditorTemplateDefinition.EditingTemplate>
+                        </xctk:EditorTemplateDefinition>
+                        <xctk:EditorTemplateDefinition TargetProperties="Caption">
+                            <xctk:EditorTemplateDefinition.EditingTemplate>
+                                <DataTemplate>
+                                    <TextBox Text="{Binding Path=Value,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
                                 </DataTemplate>
                             </xctk:EditorTemplateDefinition.EditingTemplate>
                         </xctk:EditorTemplateDefinition>

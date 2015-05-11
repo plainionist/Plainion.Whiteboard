@@ -6,9 +6,6 @@ using Plainion.Windows;
 
 namespace Plainion.WhiteBoard
 {
-    /// <summary>
-    /// Interaction logic for App.xaml
-    /// </summary>
     public partial class App : Application
     {
         private CompositionContainer myContainer;
