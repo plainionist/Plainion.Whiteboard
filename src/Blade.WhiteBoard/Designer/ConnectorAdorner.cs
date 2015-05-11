@@ -81,8 +81,6 @@ namespace Plainion.WhiteBoard.Designer
 
                 Canvas.SetZIndex( newConnection, myDesignerCanvas.Children.Count );
                 myDesignerCanvas.Children.Add( newConnection );
-
-                myDesignerCanvas.SelectionService.SelectItem( myDesignerCanvas, newConnection );
             }
 
             if ( HitDesignerItem != null )

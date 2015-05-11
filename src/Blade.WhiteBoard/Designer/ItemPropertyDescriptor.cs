@@ -2,13 +2,14 @@
 using System.ComponentModel;
 using System.Reflection;
 using System.Windows;
+using System.Windows.Controls;
 
 namespace Plainion.WhiteBoard.Designer
 {
     public class ItemPropertyDescriptor : PropertyDescriptor
     {
         private DependencyObject myRoot;
-        private DependencyObject myOwner;
+        private object myOwner;
         private ItemProperty myProperty;
         private PropertyInfo myPropertyInfo;
 
@@ -19,7 +20,7 @@ namespace Plainion.WhiteBoard.Designer
             myProperty = property;
         }
 
-        private DependencyObject Owner
+        private object Owner
         {
             get
             {
@@ -32,7 +33,7 @@ namespace Plainion.WhiteBoard.Designer
             }
         }
 
-        private DependencyObject GetOwner()
+        private object GetOwner()
         {
             if( myProperty.ElementName == null )
             {
@@ -40,10 +41,20 @@ namespace Plainion.WhiteBoard.Designer
                 return myRoot;
             }
 
-            var owner = LogicalTreeHelper.FindLogicalNode( myRoot, myProperty.ElementName );
+            object owner = LogicalTreeHelper.FindLogicalNode( myRoot, myProperty.ElementName );
             if( owner != null )
             {
                 return owner;
+            }
+
+            var connection = myRoot as Control;
+            if( connection != null )
+            {
+                owner = connection.Template.FindName( myProperty.ElementName, connection );
+                if( owner != null )
+                {
+                    return owner;
+                }
             }
 
             throw new InvalidOperationException( "Owner not found: " + myProperty.ElementName );

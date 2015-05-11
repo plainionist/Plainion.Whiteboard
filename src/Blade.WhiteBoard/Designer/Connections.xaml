@@ -114,7 +114,7 @@
                             </Grid.LayoutTransform>
                         </Grid>
 
-                        <TextBlock Width="100" Height="35"
+                        <TextBlock Height="35"
                                        Text="{Binding Path=Caption}"
                                        Canvas.Left="{Binding LabelPosition.X}"
                                        Canvas.Top="{Binding LabelPosition.Y}">
@@ -147,6 +147,7 @@
                     <d:ItemProperty ElementProperty="IsDotted" DisplayName="IsDotted"/>
                     <d:ItemProperty ElementProperty="SourceArrowSymbol" DisplayName="SourceArrowSymbol"/>
                     <d:ItemProperty ElementProperty="SinkArrowSymbol" DisplayName="SinkArrowSymbol"/>
+                    <d:ItemProperty ElementName="PART_ConnectionPath" ElementProperty="Stroke" DisplayName="Stroke"/>
                 </d:ItemPropertyCollection>
             </Setter.Value>
         </Setter>

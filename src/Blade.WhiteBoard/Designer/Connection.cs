@@ -4,10 +4,12 @@ using System.Windows;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Shapes;
 using Plainion.WhiteBoard.Model;
 
 namespace Plainion.WhiteBoard.Designer
 {
+    [TemplatePart( Name = "PART_ConnectionPath", Type = typeof( Path ) )]
     [TypeDescriptionProvider( typeof( ItemPropertiesProvider ) )]
     public class Connection : ItemContent, ISelectable, INotifyPropertyChanged
     {
@@ -58,6 +60,15 @@ namespace Plainion.WhiteBoard.Designer
             Unloaded += OnUnloaded;
         }
 
+        public override void OnApplyTemplate()
+        {
+            base.OnApplyTemplate();
+
+            var designer = VisualTreeHelper.GetParent( this ) as DesignerCanvas;
+            designer.SelectionService.SelectItem( designer, this );
+        }
+
+       
         // we could use DependencyProperties as well to inform others of property changes
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -362,7 +373,7 @@ namespace Plainion.WhiteBoard.Designer
             eventArgs.Handled = false;
 
             var designer = VisualTreeHelper.GetParent( this ) as DesignerCanvas;
-            if ( designer == null )
+            if( designer == null )
             {
                 return;
             }
