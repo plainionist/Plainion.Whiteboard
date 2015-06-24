@@ -119,6 +119,9 @@ namespace Plainion.WhiteBoard.Serialization
         {
             var propertiesXaml = XamlWriter.Save( connection.Properties );
 
+            Contract.Invariant(!string.IsNullOrEmpty(connection.Source.Name), "Source connector name required for serialization");
+            Contract.Invariant(!string.IsNullOrEmpty(connection.Sink.Name), "Sink connector name required for serialization");
+
             return new XElement( "Connection",
                 new XElement( "SourceID", myIdTransformation.GetId( connection.Source.ParentDesignerItem.ID ) ),
                 new XElement( "SinkID", myIdTransformation.GetId( connection.Sink.ParentDesignerItem.ID ) ),

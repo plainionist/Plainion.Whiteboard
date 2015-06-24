@@ -175,6 +175,11 @@ namespace Plainion.WhiteBoard.Serialization
             var connectorDecorator = ( Control )designerItem.Template.FindName( "PART_ConnectorDecorator", designerItem );
             connectorDecorator.ApplyTemplate();
 
+            if (string.IsNullOrEmpty(connectorName))
+            {
+                connectorName = "Left";
+            }
+
             return connectorDecorator.Template.FindName( connectorName, connectorDecorator ) as Connector;
         }
 

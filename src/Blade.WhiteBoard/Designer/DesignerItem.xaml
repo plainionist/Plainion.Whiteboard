@@ -103,21 +103,23 @@
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
 
-            <d:Connector Grid.Column="0" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Left" Orientation="Left"/>
-            <d:Connector Grid.Column="0" Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Left" Orientation="Left"/>
-            <d:Connector Grid.Column="0" Grid.Row="5" VerticalAlignment="Center" HorizontalAlignment="Left" Orientation="Left"/>
+            <!-- names are essential for serialization! dont change the names otherwise existing documents are broken -->
+            
+            <d:Connector x:Name="LeftTop" Grid.Column="0" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Left" Orientation="Left"/>
+            <d:Connector x:Name="Left" Grid.Column="0" Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Left" Orientation="Left"/>
+            <d:Connector x:Name="LeftBottom" Grid.Column="0" Grid.Row="5" VerticalAlignment="Center" HorizontalAlignment="Left" Orientation="Left"/>
 
-            <d:Connector Grid.Column="1" Grid.Row="0" VerticalAlignment="Top" HorizontalAlignment="Center" Orientation="Top"/>
-            <d:Connector Grid.Column="3" Grid.Row="0" VerticalAlignment="Top" HorizontalAlignment="Center" Orientation="Top"/>
-            <d:Connector Grid.Column="5" Grid.Row="0" VerticalAlignment="Top" HorizontalAlignment="Center" Orientation="Top"/>
+            <d:Connector x:Name="TopLeft" Grid.Column="1" Grid.Row="0" VerticalAlignment="Top" HorizontalAlignment="Center" Orientation="Top"/>
+            <d:Connector x:Name="Top" Grid.Column="3" Grid.Row="0" VerticalAlignment="Top" HorizontalAlignment="Center" Orientation="Top"/>
+            <d:Connector x:Name="TopRight" Grid.Column="5" Grid.Row="0" VerticalAlignment="Top" HorizontalAlignment="Center" Orientation="Top"/>
 
-            <d:Connector Grid.Column="6" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Right" Orientation="Right"/>
-            <d:Connector Grid.Column="6" Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Right" Orientation="Right"/>
-            <d:Connector Grid.Column="6" Grid.Row="5" VerticalAlignment="Center" HorizontalAlignment="Right" Orientation="Right"/>
+            <d:Connector x:Name="RightTop" Grid.Column="6" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Right" Orientation="Right"/>
+            <d:Connector x:Name="Right" Grid.Column="6" Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Right" Orientation="Right"/>
+            <d:Connector x:Name="RightBottom" Grid.Column="6" Grid.Row="5" VerticalAlignment="Center" HorizontalAlignment="Right" Orientation="Right"/>
 
-            <d:Connector Grid.Column="1" Grid.Row="6" VerticalAlignment="Bottom" HorizontalAlignment="Center" Orientation="Bottom"/>
-            <d:Connector Grid.Column="3" Grid.Row="6" VerticalAlignment="Bottom" HorizontalAlignment="Center" Orientation="Bottom"/>
-            <d:Connector Grid.Column="5" Grid.Row="6" VerticalAlignment="Bottom" HorizontalAlignment="Center" Orientation="Bottom"/>
+            <d:Connector x:Name="BottomLeft" Grid.Column="1" Grid.Row="6" VerticalAlignment="Bottom" HorizontalAlignment="Center" Orientation="Bottom"/>
+            <d:Connector x:Name="Bottom" Grid.Column="3" Grid.Row="6" VerticalAlignment="Bottom" HorizontalAlignment="Center" Orientation="Bottom"/>
+            <d:Connector x:Name="BottomRight" Grid.Column="5" Grid.Row="6" VerticalAlignment="Bottom" HorizontalAlignment="Center" Orientation="Bottom"/>
         </Grid>
     </ControlTemplate>
 
