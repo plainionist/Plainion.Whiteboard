@@ -65,8 +65,13 @@ namespace Plainion.WhiteBoard.Serialization
 
                 Canvas.SetZIndex( connection, Int32.Parse( connectionXML.Element( "zIndex" ).Value ) );
 
-                var properties = ( ItemPropertyCollection )XamlReader.Load( XmlReader.Create( new StringReader( connectionXML.Element( "Properties" ).Value ) ) );
-                connection.Properties = properties;
+                var propertiesContent = ConvertBladeNamespaces(connectionXML.Element("Properties").Value);
+
+                using (var reader = XmlReader.Create(new StringReader(propertiesContent)))
+                {
+                    var properties = (ItemPropertyCollection)XamlReader.Load(reader);
+                    connection.Properties = properties;
+                }
 
                 connection.Caption = connectionXML.Element( "Caption" ).Value;
 
@@ -101,18 +106,34 @@ namespace Plainion.WhiteBoard.Serialization
             var contentContainerElement = itemXML.Element( "Content" );
             var versionAttribute = contentContainerElement.Attribute( "Version" );
 
-            var contentXml = XElement.Load( XmlReader.Create( new StringReader( contentContainerElement.Value ) ) );
+            var contentText = ConvertBladeNamespaces(contentContainerElement.Value);
 
-            RewriteImageSource( contentXml );
-
-            var content = XamlReader.Load( contentXml.CreateReader() );
-
-            if( versionAttribute == null )
+            using (var reader = XmlReader.Create(new StringReader(contentText)))
             {
-                UpgradeItemContent( ( ItemContent )content );
-            }
+                var contentXml = XElement.Load(reader);
 
-            item.Content = content;
+                RewriteImageSource(contentXml);
+
+                var content = XamlReader.Load(contentXml.CreateReader());
+
+                if (versionAttribute == null)
+                {
+                    UpgradeItemContent((ItemContent)content);
+                }
+
+                item.Content = content;
+            }
+        }
+
+        private static string ConvertBladeNamespaces(string xmlText)
+        {
+            return xmlText
+                .Replace(
+                    "clr-namespace:Blade.WhiteBoard.Designer;assembly=Blade.WhiteBoard",
+                    "clr-namespace:Plainion.WhiteBoard.Designer;assembly=Plainion.WhiteBoard")
+                .Replace(
+                    "clr-namespace:Blade.WhiteBoard.Controls;assembly=Blade.WhiteBoard",
+                    "clr-namespace:Plainion.WhiteBoard.Controls;assembly=Plainion.WhiteBoard");
         }
 
         private void RewriteImageSource( XElement root )
