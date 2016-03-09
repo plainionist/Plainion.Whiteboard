@@ -56,8 +56,8 @@
                 <StackPanel Grid.Row="0">
                     <Expander Header="Common" Content="{StaticResource CommonStencils}" IsExpanded="True"/>
                     <Expander Header="Special" Content="{StaticResource SpecialStencils}"/>
-                    <Expander Header="Thumbnail" IsExpanded="True">
-                        <c:ScrollViewerThumbnail ScrollViewer="{Binding ElementName=myScrollViewer}" 
+                    <Expander Header="Bird's-eye" IsExpanded="True">
+                        <c:ScrollViewerBirdsEyeView ScrollViewer="{Binding ElementName=myScrollViewer}" 
                                                  HorizontalAlignment="Stretch" Height="200"/>
                     </Expander>
                 </StackPanel>

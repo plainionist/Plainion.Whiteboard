@@ -1,18 +1,16 @@
 ﻿using System;
-using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using System.Windows.Media;
 using System.Windows.Threading;
-using Plainion.WhiteBoard.Designer;
 
 namespace Plainion.WhiteBoard.Controls
 {
-    public partial class ScrollViewerThumbnail : UserControl
+    public partial class ScrollViewerBirdsEyeView : UserControl
     {
         private DispatcherTimer myTimer;
-        public ScrollViewerThumbnail()
+        public ScrollViewerBirdsEyeView()
         {
             InitializeComponent();
 
@@ -67,7 +65,7 @@ namespace Plainion.WhiteBoard.Controls
         }
 
         public static readonly DependencyProperty ScrollViewerProperty = DependencyProperty.Register( "ScrollViewer",
-            typeof( ScrollViewer ), typeof( ScrollViewerThumbnail ), new UIPropertyMetadata( null ) );
+            typeof( ScrollViewer ), typeof( ScrollViewerBirdsEyeView ), new UIPropertyMetadata( null ) );
 
         public Brush HighlightFill
         {
@@ -78,7 +76,7 @@ namespace Plainion.WhiteBoard.Controls
         public static readonly DependencyProperty HighlightFillProperty =
             DependencyProperty.Register( "HighlightFill",
                 typeof( Brush ),
-                typeof( ScrollViewerThumbnail ),
+                typeof( ScrollViewerBirdsEyeView ),
                 new UIPropertyMetadata( new SolidColorBrush( Color.FromArgb( 128, 255, 255, 0 ) ) ) );
 
     }

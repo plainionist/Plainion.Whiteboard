@@ -81,7 +81,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Controls\ScrollViewerThumbnail.xaml">
+    <Page Include="Controls\ScrollViewerBirdsEyeView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -160,8 +160,8 @@
     <Compile Include="Commands.cs" />
     <Compile Include="Controls\BrushPicker.cs" />
     <Compile Include="Controls\HyperLink.cs" />
-    <Compile Include="Controls\ScrollViewerThumbnail.xaml.cs">
-      <DependentUpon>ScrollViewerThumbnail.xaml</DependentUpon>
+    <Compile Include="Controls\ScrollViewerBirdsEyeView.xaml.cs">
+      <DependentUpon>ScrollViewerBirdsEyeView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\SelectionChangedBehaviour.cs" />
     <Compile Include="Designer\ItemContent.cs" />
