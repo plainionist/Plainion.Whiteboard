@@ -1,5 +1,7 @@
 
-Plainion.Whiteboard aims to be a pragmatic design tool for whiteboard like design sessions.
+Plainion.Whiteboard is a pragmatic software design tool for whiteboard-like design sessions.
+Unlike other modelling tools Plainion.Whiteboard does not enforce UML or any modelling rules.
+Instead, it encourages simplicity and freedom of choice.
 
 ![](doc/Screenshots/Overview.png)
 
